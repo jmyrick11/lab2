@@ -1,3 +1,6 @@
+
+///Jackson Myrick
+
 package pkgCore;
 
 import static org.junit.jupiter.api.Assertions.*;

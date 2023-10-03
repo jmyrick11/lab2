@@ -150,10 +150,8 @@ public class HandPoker extends Hand implements Comparable {
 	        bIsRoyalFlush = true;
 	        HandScorePoker HSP = (HandScorePoker) this.getHS();
 	        HSP.seteHandStrength(eHandStrength.RoyalFlush);
-	        HSP.setHiCard(this.getCards().get(0));
-	        HSP.setLoCard(null);
-	        HSP.setKickers(null);
-	        this.setHS(HSP);
+	       
+	        
 	    }
 		
 		return bIsRoyalFlush;
@@ -167,10 +165,8 @@ public class HandPoker extends Hand implements Comparable {
 	        bisStraightFlush = true;
 	        HandScorePoker HSP = (HandScorePoker) this.getHS();
 	        HSP.seteHandStrength(eHandStrength.StraightFlush);
-	        HSP.setHiCard(this.getCards().get(this.getCRC().get(eRow.ONE.ordinal()).getiCardPosition()));
-	        HSP.setLoCard(null);
-	        HSP.setKickers(null);
-	        this.setHS(HSP);
+	       
+	        
 	    }
 
 		return bisStraightFlush;
@@ -238,8 +234,7 @@ public class HandPoker extends Hand implements Comparable {
 		if (bisFlush) {
 			HandScorePoker HSP = (HandScorePoker) this.getHS();
 			HSP.seteHandStrength(eHandStrength.Flush);
-			HSP.setHiCard(this.getCards()
-					.get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
+			HSP.setHiCard(this.getCards().get(CRC.get(eRow.ONE.ordinal()).getiCardPosition()));
 			HSP.setLoCard(null);
 			HSP.setKickers(FindTheKickers(this.getCRC()));
 			this.setHS(HSP);
@@ -297,7 +292,6 @@ public class HandPoker extends Hand implements Comparable {
 				HandScorePoker HSP = (HandScorePoker) this.getHS();
 				HSP.seteHandStrength(eHandStrength.ThreeOfAKind);
 				HSP.setHiCard(this.getCards().get(crc.getiCardPosition()));
-				HSP.setLoCard(null);
 				HSP.setKickers(FindTheKickers(this.getCRC()));
 				this.setHS(HSP);
 
@@ -350,7 +344,6 @@ public class HandPoker extends Hand implements Comparable {
 	            HandScorePoker HSP = (HandScorePoker) this.getHS();
 	            HSP.seteHandStrength(eHandStrength.Pair);
 	            HSP.setHiCard(this.getCards().get(crc.getiCardPosition()));
-	            HSP.setLoCard(null);
 	            HSP.setKickers(FindTheKickers(this.getCRC()));
 	            this.setHS(HSP);
 	            

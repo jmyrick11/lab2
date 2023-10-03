@@ -303,6 +303,59 @@ public class HandPokerTest {
 		Assertions.assertNull(HP.getHSP().getLoCard());
 		
 	}	
+	
+	@Test
+	public void HandPoker_FourOfAKind() {
+	    ArrayList<Card> cards = new ArrayList<Card>();
+
+	    cards.add(new Card(eSuit.CLUBS, eRank.KING, 1));
+	    cards.add(new Card(eSuit.HEARTS, eRank.KING, 1));
+	    cards.add(new Card(eSuit.DIAMONDS, eRank.KING, 1));
+	    cards.add(new Card(eSuit.SPADES, eRank.KING, 1));
+	    cards.add(new Card(eSuit.CLUBS, eRank.TEN, 1));
+
+	    HandPoker HP = new HandPoker();
+	    HP.setCards(cards);
+
+	    try {
+	        HP.ScoreHand();
+	    } catch (HandException e) {
+	        e.printStackTrace();
+	    }
+
+	    Assertions.assertEquals(eHandStrength.FourOfAKind, HP.getHSP().geteHandStrength());
+	    Assertions.assertEquals(eRank.KING, HP.getHSP().getHiCard().geteRankValue());
+	    Assertions.assertNull(HP.getHSP().getLoCard());
+	    Assertions.assertEquals(eRank.TEN, HP.getHSP().getKickers().get(0).geteRankValue());
+	}
+	
+	@Test
+	public void HandPoker_RegularFlush() {
+	    ArrayList<Card> cards = new ArrayList<Card>();
+
+	    cards.add(new Card(eSuit.CLUBS, eRank.ACE, 1));
+	    cards.add(new Card(eSuit.CLUBS, eRank.TEN, 1));
+	    cards.add(new Card(eSuit.CLUBS, eRank.SEVEN, 1));
+	    cards.add(new Card(eSuit.CLUBS, eRank.FIVE, 1));
+	    cards.add(new Card(eSuit.CLUBS, eRank.THREE, 1));
+
+	    HandPoker HP = new HandPoker();
+	    HP.setCards(cards);
+
+	    try {
+	        HP.ScoreHand();
+	    } catch (HandException e) {
+	        e.printStackTrace();
+	    }
+
+	    Assertions.assertEquals(eHandStrength.Flush, HP.getHSP().geteHandStrength());
+	    Assertions.assertEquals(eRank.ACE, HP.getHSP().getHiCard().geteRankValue());
+	    Assertions.assertNull(HP.getHSP().getLoCard());
+	    Assertions.assertEquals(eRank.TEN, HP.getHSP().getKickers().get(0).geteRankValue());
+	    Assertions.assertEquals(eRank.SEVEN, HP.getHSP().getKickers().get(1).geteRankValue());
+	    Assertions.assertEquals(eRank.FIVE, HP.getHSP().getKickers().get(2).geteRankValue());
+	    Assertions.assertEquals(eRank.THREE, HP.getHSP().getKickers().get(3).geteRankValue());
+	}
 
 
 }
